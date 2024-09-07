@@ -7,11 +7,11 @@ public class Request
 
 
 
-    public Request(User user, Book book, RequestStatus status,String username)
+    public Request(User user, Book book, RequestStatus requestStatus,String username)
     {
         this.user = user;
         this.book = book;
-        this.requestStatus = status;
+        this.requestStatus = requestStatus;
         this.username = username;
     }
 
