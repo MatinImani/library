@@ -1,31 +1,26 @@
 public class ReservationManager extends User
 {
-    private final Library library;
-//    public  ReservationManager(Library library)
-//    {
-//        super(library);
-//        this.library = library;
-//    }
+
     public ReservationManager(String Username, String Password )
     {
         super(Username, Password);
-        this.library = new Library();
+
     }
 
 //دیدن لیست رزرو های کتاب
     public void listOfBookReservationRequests()
     {
-        for (int i=0; i<Library.getReservations().size(); i++)
+        for (int i=0; i<Library.library.getReservations().size(); i++)
         {
-            System.out.println(Library.getReservations().get(i).toString());
+            System.out.println(Library.library.getReservations().get(i).toString());
         }
     }
     public void listOfBookReservationRequests2()
     {
         System.out.println("List of Reservation Requests:");
-        for (int i=0; i<Library.getReservations().size(); i++)
+        for (int i=0; i<Library.library.getReservations().size(); i++)
         {
-            System.out.println(i+") "+Library.getReservations().get(i).toString());
+            System.out.println(i+") "+Library.library.getReservations().get(i).toString());
         }
 //        for (Request request : library.getReservations())
 //        {
@@ -45,10 +40,11 @@ public class ReservationManager extends User
     }
     public void acceptedTheRequest2(Request request)
     {
-       request.setRequestStatus(RequestStatus.ACCEPTED);
-        System.out.println("Approved: " + request);
-        library.addBooks(request.getBook());
+        request.setRequestStatus(RequestStatus.ACCEPTED);
         request.setBookStatus(BookStatus.NOT_BOOKABLE);
+        System.out.println("Approved: " + request);
+        Library.library.addBooks(request.getBook());
+
     }
 
 
@@ -61,7 +57,7 @@ public class ReservationManager extends User
     {
         request.setRequestStatus(RequestStatus.REJECTED);
         System.out.println("Rejected: " + request);
-        library.removeReservations(request);
+        Library.library.removeReservations(request);
     }
 
 }

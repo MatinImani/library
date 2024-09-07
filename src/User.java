@@ -1,6 +1,6 @@
 public abstract class User
 {
-    private final Library library;
+
     private String username;
     private String password;
 
@@ -8,7 +8,7 @@ public abstract class User
     {
         this.username = username;
         this.password = password;
-        library = new Library();
+
     }
 //    public User(Library library)
 //    {
@@ -39,15 +39,15 @@ public abstract class User
 
     public void viewTheListOfBooks1()
     {
-        for (int i=0; i<Library.getBooks().size(); i++)
+        for (int i=0; i<Library.library.getBooks().size(); i++)
         {
-            Book book = Library.getBooks().get(i);
+            Book book = Library.library.getBooks().get(i);
             System.out.println(i+") "+book);
         }
     }
     public static User login(String username, String password)
     {
-        for(User user : Library.getUsers())
+        for(User user : Library.library.getUsers())
         {
             if(user.getUsername().equals(username) && user.getPassword().equals(password))
                 return user;
@@ -57,7 +57,7 @@ public abstract class User
     }
     public static User signup(String username, String password,Role role)
     {
-        for (User user : Library.getUsers())
+        for (User user : Library.library.getUsers())
         {
             if(user.getUsername().equals(username))
                 return null;
@@ -76,7 +76,7 @@ public abstract class User
                 break;
         }
        // Library.getUsers().add(user);
-          user.library.addUsers(user);
+        Library.library.addUsers(user);
         return user;
     }
 

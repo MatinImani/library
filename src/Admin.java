@@ -1,40 +1,34 @@
 public class Admin extends User
 {
-    private final Library library;
-
-//    public Admin(Library library)
-//    {
-//        super(library);
-//        this.library = library;
-//    }
-
-
-
     public Admin(String username, String password)
     {
         super(username, password);
-        this.library = new Library();
+
     }
 
     public void ViewTheListOfBooks()
     {
-            for (int i=0; i<Library.getBooks().size(); i++)
+            for (int i=0; i<Library.library.getBooks().size(); i++)
             {
-                System.out.println(Library.getBooks().get(i).toString());
+                System.out.println(Library.library.getBooks().get(i).toString());
             }
     }
     public void ViewTheListOfBooks2()
     {
         System.out.println("List of Books:");
-        for (Book book : Library.getBooks())
-            System.out.println(book);
+        for (int i=0; i<Library.library.getBooks().size(); i++)
+        {
+            System.out.println(i+") "+Library.library.getBooks().get(i).toString());
+        }
+//        for (Book book : Library.library.getBooks())
+//            System.out.println(book);
     }
 
     public boolean addBook(Book book)
     {
-        if (!Library.getBooks().contains(book))
+        if (!Library.library.getBooks().contains(book))
         {
-            Library.getBooks().add(book);
+            Library.library.getBooks().add(book);
             return true;
         }
         return false;
@@ -44,9 +38,9 @@ public class Admin extends User
     public void addBook2(String nameBook, String author, int pages, Date year)
     {
         Book newBook = new Book(nameBook, author, pages, year);
-        if(!Library.getBooks().contains(newBook))
+        if(!Library.library.getBooks().contains(newBook))
         {
-            library.addBooks(new Book(nameBook,author,pages,year));
+            Library.library.addBooks(new Book(nameBook,author,pages,year));
             System.out.println("Book added: " + nameBook);
         }
         else
@@ -58,12 +52,12 @@ public class Admin extends User
 
     public boolean removeBook(Book book)
     {
-        return Library.getBooks().remove(book);
+        return Library.library.getBooks().remove(book);
     }
 
     public void removeBook2(Book book)
     {
-        library.removeBooks(book);
+        Library.library.removeBooks(book);
         System.out.println("Book removed: " + book.getNameBook());
     }
 

@@ -3,23 +3,18 @@ import java.util.Scanner;
 public class Main
 {
     public static Scanner sc = new Scanner(System.in);
+
     public static void main(String[] args)
     {
+        Library.library.addBooks(new Book("Java The Complete Reference", "Danny Coward",124,new Date(2021)));
+        Library.library.addBooks(new Book("Alice’s Adventures in Wonderland", " Lewis Carroll",522,new Date(1865)));
 
-        Library library = new Library();
-
-
-        library.addBooks(new Book("Java The Complete Reference", "Danny Coward",124,new Date(2021)));
-        library.addBooks(new Book("Alice’s Adventures in Wonderland", " Lewis Carroll",522,new Date(1865)));
-
-        library.addUsers(new Admin("matin imani","ma7inimn"));
+        Library.library.addUsers(new Admin("matin imani","ma7inimn"));
 
         User user2=new Admin("nazanin hamidmanesh","n4z8nin");
-        library.addUsers(user2);
+        Library.library.addUsers(user2);
 
         startMenu();
-
-
 
     }
     public static void startMenu()
@@ -32,7 +27,10 @@ public class Main
             int select=sc.nextInt();
             sc.nextLine();
             if(select==3)
+            {
+                System.out.println("Good bay!");
                 break;
+            }
             switch(select)
             {
                 case 1:
@@ -176,9 +174,10 @@ public class Main
 //                    YearRemove.setYear(yearRemove);
 //                    Book book=new Book(removeBookName,authorNameRemove,numPagesRemove,YearRemove);
 //                    admin.removeBook2(book);
+                    admin.ViewTheListOfBooks2();
                     System.out.println("Please enter the number of the book you want to delete:");
                     int deleteNum = sc.nextInt();
-                    Book book=Library.getBooks().remove(deleteNum);
+                    Book book=Library.library.getBooks().remove(deleteNum);
                     admin.removeBook(book);
                     System.out.println("The book has been successfully removed from the library.");
                     caseRoleManager(user);
@@ -211,7 +210,7 @@ public class Main
                 System.out.println("Please enter the number of the request you want to approve:");
                 index=sc.nextInt();
                 sc.nextLine();
-                request=Library.getReservations().get(index);
+                request=Library.library.getReservations().get(index);
                 reservationManager.acceptedTheRequest2(request);
                 System.out.println("Request has been successfully approved.");
                 caseRoleReservationManager(user);
@@ -221,7 +220,7 @@ public class Main
                 System.out.println("Please enter the number of the request you want to reject:");
                 index=sc.nextInt();
                 sc.nextLine();
-                request=Library.getReservations().get(index);
+                request=Library.library.getReservations().get(index);
                 reservationManager.rejectingTheRequest2(request);
                 System.out.println("Request has been successfully rejected.");
                 caseRoleReservationManager(user);
@@ -245,6 +244,7 @@ public class Main
                 caseRoleBookReader(user);
                 break;
             case 2:
+                bookReader.ViewTheListOfBooks2();
                 System.out.println("Please enter the name of the book for reservation:");
                 String bookNameReserve = sc.nextLine();
                 bookReader.BookReservationRequest2(bookNameReserve,"User:");
@@ -254,7 +254,7 @@ public class Main
                 bookReader.ViewTheListOfUserRequests();
                 System.out.println("Please enter the number of the request you want to delete:");
                 int deleteNum = sc.nextInt();
-                Request removeRequest=Library.getReservations().get(deleteNum);
+                Request removeRequest=Library.library.getReservations().get(deleteNum);
                 boolean result=bookReader.DeleteBookReservationRequest(removeRequest);
                 if(result)
                 {

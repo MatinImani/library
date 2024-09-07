@@ -1,13 +1,14 @@
 import java.util.ArrayList;
 public class Library
 {
+    public static Library library = new Library();
 
-    private static ArrayList<User> users =new ArrayList<>();
-    private  static ArrayList<Book> books =new ArrayList<>();
-    private static ArrayList<Request> requests = new ArrayList<>();
+    private  ArrayList<User> users =new ArrayList<>();
+    private  ArrayList<Book> books =new ArrayList<>();
+    private  ArrayList<Request> requests = new ArrayList<>();
 
 
-    public static ArrayList<Book> getBooks()
+    public  ArrayList<Book> getBooks()
     {
         return books;
     }
@@ -21,7 +22,7 @@ public class Library
     }
 
 
-    public static ArrayList<User> getUsers()
+    public  ArrayList<User> getUsers()
     {
         return users;
     }
@@ -32,7 +33,7 @@ public class Library
 
 
 
-    public static ArrayList<Request> getReservations()
+    public  ArrayList<Request> getReservations()
     {
         return requests;
     }
