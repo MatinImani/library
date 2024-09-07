@@ -1,6 +1,5 @@
 public abstract class User
 {
-
     private String username;
     private String password;
 
@@ -8,14 +7,7 @@ public abstract class User
     {
         this.username = username;
         this.password = password;
-
     }
-//    public User(Library library)
-//    {
-//        this.library = library;
-//        username=null;
-//        password=null;
-//    }
 
     public void setUsername(String username)
     {
@@ -51,7 +43,6 @@ public abstract class User
         {
             if(user.getUsername().equals(username) && user.getPassword().equals(password))
                 return user;
-
         }
         return null;
     }

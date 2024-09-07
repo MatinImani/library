@@ -2,12 +2,6 @@ import java.util.ArrayList;
 
 public class BookReader extends User
 {
-
-
-
-
-
-
     public BookReader(String userName, String password)
     {
         super(userName, password);
@@ -43,7 +37,7 @@ public class BookReader extends User
 //درخواست رزرو کتاب
     public boolean BookReservationRequest(Book book)
     {
-        if(book.getStatus()==BookStatus.NOT_BOOKABLE)
+        if(book.getStatusBook()==BookStatus.NOT_BOOKABLE)
             return false;
         Request request=new Request(this,book,RequestStatus.PENDING);
         Library.library.getReservations().add(request);
@@ -55,16 +49,15 @@ public class BookReader extends User
 
         for(Book book : Library.library.getBooks())
         {
-            if(book.getStatus()==BookStatus.BOOKABLE && book.getNameBook().equals(nameBook))
+            if(book.getStatusBook()==BookStatus.BOOKABLE && book.getNameBook().equals(nameBook))
             {
-                Request request=new Request(this,book, RequestStatus.PENDING, userName,BookStatus.BOOKABLE);
+                Request request=new Request(this,book, RequestStatus.PENDING, userName);
                 Library.library.addReservation(request);
                 System.out.println("Reservation requested for: " + book.getNameBook());
                 found = true;
                 break;
             }
-
-            else if(book.getStatus()==BookStatus.NOT_BOOKABLE)
+            else if(book.getStatusBook()==BookStatus.NOT_BOOKABLE)
             {
                 System.out.println("This book is not available for reservation!");
             }
@@ -84,23 +77,6 @@ public class BookReader extends User
             return false;
         return Library.library.getReservations().remove(request);
     }
-    public void DeleteBookReservationRequest2(String nameBook, String userName)
-    {
-        for(Book book : Library.library.getBooks())
-        {
-            if(!book.getNameBook().equalsIgnoreCase(nameBook))
-            {
-                Request request=new Request(this, book,RequestStatus.PENDING, userName,BookStatus.BOOKABLE);
-                Library.library.removeReservations(request);
-                System.out.println("remove Reservation requested for: " + book.getNameBook());
-            }
-            else
-            {
-                System.out.println("Book not found!");
-            }
-        }
-    }
-
 
 //دیدن لیست درخواست های کاربر
     public void ViewTheListOfUserRequests()

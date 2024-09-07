@@ -4,7 +4,7 @@ public class Book
     private String author;
     private int pages;
     private Date year;
-    private BookStatus status=BookStatus.BOOKABLE;
+    private BookStatus statusBook=BookStatus.BOOKABLE;
 
     public Book()
     {
@@ -38,8 +38,8 @@ public class Book
         this.year = year;
     }
 
-    public void setStatus(BookStatus status) {
-        this.status = status;
+    public void setStatusBook(BookStatus statusBook) {
+        this.statusBook = statusBook;
     }
 
     public String getNameBook() {
@@ -57,12 +57,9 @@ public class Book
     public Date getYear() {
         return year;
     }
-    public BookStatus getStatus() {
-        return status;
+    public BookStatus getStatusBook() {
+        return statusBook;
     }
-
-
-
 
     @Override
     public String toString()
@@ -72,7 +69,7 @@ public class Book
                 " | authorName:"+author+
                 " | Number of page:"+pages+
                 " | "               + year.toString()+
-                " | status:"+status+
+                " | statusBook:"+statusBook+
                 "}";
 
     }

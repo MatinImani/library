@@ -1,10 +1,8 @@
 public class ReservationManager extends User
 {
-
     public ReservationManager(String Username, String Password )
     {
         super(Username, Password);
-
     }
 
 //دیدن لیست رزرو های کتاب
@@ -36,15 +34,15 @@ public class ReservationManager extends User
         User user = request.getUser();
         Book book = request.getBook();
         ((BookReader)user).getUserBooks().add(book);
-        book.setStatus(BookStatus.NOT_BOOKABLE);
+        book.setStatusBook(BookStatus.NOT_BOOKABLE);
     }
     public void acceptedTheRequest2(Request request)
     {
         request.setRequestStatus(RequestStatus.ACCEPTED);
-        request.setBookStatus(BookStatus.NOT_BOOKABLE);
+        Book book = request.getBook();
+        book.setStatusBook(BookStatus.NOT_BOOKABLE);
         System.out.println("Approved: " + request);
         Library.library.addBooks(request.getBook());
-
     }
 
 

@@ -19,18 +19,11 @@ public class Main
     }
     public static void startMenu()
     {
-        while(true)
-        {
             System.out.println("______________________________________________________________________________________________________________________________________________________");
             System.out.println("Welcome to matin Library");
             System.out.println("1:Login\n2:Signup\n3:Exit ");
             int select=sc.nextInt();
             sc.nextLine();
-            if(select==3)
-            {
-                System.out.println("Good bay!");
-                break;
-            }
             switch(select)
             {
                 case 1:
@@ -39,8 +32,11 @@ public class Main
                 case 2:
                     signup();
                     break;
+                case 3:
+                    System.out.println("Good bay!");
+                    break;
             }
-        }
+
     }
     public static void login()
     {
@@ -116,6 +112,9 @@ public class Main
                         System.out.println("Username is not available.\nPlease try again with another username.");
                         startMenu();
                     }
+                default:
+                    startMenu();
+                    break;
             }
 
     }
