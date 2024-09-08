@@ -9,12 +9,10 @@ public class Main
         Library.library.addBooks(new Book("Java The Complete Reference", "Danny Coward",124,new Date(2021)));
         Library.library.addBooks(new Book("Alice’s Adventures in Wonderland", " Lewis Carroll",522,new Date(1865)));
 
-        Library.library.addUsers(new Admin("matin imani","12345"));
+        Library.library.addUsers(new Admin("matin imani","ma7inimn"));
 
-        User user2=new Admin("TahooraSaeedi","1234");
+        User user2=new Admin("nazanin hamidmanesh","n4z8nin");
         Library.library.addUsers(user2);
-
-        Library.library.addUsers(new Admin("EbrahimRahimi","123456"));
 
         startMenu();
 
@@ -22,7 +20,7 @@ public class Main
     public static void startMenu()
     {
             System.out.println("______________________________________________________________________________________________________________________________________________________");
-            System.out.println("Welcome to dotin Library");
+            System.out.println("Welcome to matin Library");
             System.out.println("1:Login\n2:Signup\n3:Exit ");
             int select=sc.nextInt();
             sc.nextLine();
