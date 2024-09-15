@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 
 public class Main
@@ -19,23 +20,23 @@ public class Main
     }
     public static void startMenu()
     {
-            System.out.println("______________________________________________________________________________________________________________________________________________________");
-            System.out.println("Welcome to matin Library");
-            System.out.println("1:Login\n2:Signup\n3:Exit ");
-            int select=sc.nextInt();
-            sc.nextLine();
-            switch(select)
-            {
-                case 1:
-                    login();
-                    break;
-                case 2:
-                    signup();
-                    break;
-                case 3:
-                    System.out.println("Good bay!");
-                    break;
-            }
+        System.out.println("______________________________________________________________________________________________________________________________________________________");
+        System.out.println("Welcome to matin Library");
+        System.out.println("1:Login\n2:Signup\n3:Exit ");
+        int select=sc.nextInt();
+        sc.nextLine();
+        switch(select)
+        {
+            case 1:
+                login();
+                break;
+            case 2:
+                signup();
+                break;
+            case 3:
+                System.out.println("Good bay!");
+                break;
+        }
 
     }
     public static void login()
@@ -53,7 +54,7 @@ public class Main
             {
                 caseRoleManager(user);
             }
-           else if(user instanceof ReservationManager)
+            else if(user instanceof ReservationManager)
             {
                 caseRoleReservationManager(user);
             }
@@ -72,81 +73,81 @@ public class Main
     public static void signup()
     {
 
-            System.out.println("______________________________________________________________________________________________________________________________________________________");
-            System.out.println("Choose role:\n1:Admin\n2:ReservationManager\n3:BookReader");
-            int select=sc.nextInt();
-            sc.nextLine();
-            System.out.print("Enter Username: ");
-            String username=sc.nextLine();
-            System.out.print("Enter Password: ");
-            String password=sc.nextLine();
-            User user;
-            switch(select)
-            {
-                case 1:
-                    user=User.signup(username,password,Role.ADMIN);
-                    if(user!=null)
-                        caseRoleManager(user);
-                    else
-                    {
-                        System.out.println("Username is not available.\nPlease try again with another username.");
-                        startMenu();
-                    }
-                    break;
-                case 2:
-                    user=User.signup(username,password,Role.RESERVATION_MANAGER);
-                    if(user!=null)
-                        caseRoleReservationManager(user);
-                    else
-                    {
-                        System.out.println("Username is not available.\nPlease try again with another username.");
-                        startMenu();
-                    }
-                    break;
-                case 3:
-                    user=User.signup(username,password,Role.BOOK_READER);
-                    if(user!=null)
-                        caseRoleBookReader(user);
-                    else
-                    {
-                        System.out.println("Username is not available.\nPlease try again with another username.");
-                        startMenu();
-                    }
-                default:
+        System.out.println("______________________________________________________________________________________________________________________________________________________");
+        System.out.println("Choose role:\n1:Admin\n2:ReservationManager\n3:BookReader");
+        int select=sc.nextInt();
+        sc.nextLine();
+        System.out.print("Enter Username: ");
+        String username=sc.nextLine();
+        System.out.print("Enter Password: ");
+        String password=sc.nextLine();
+        User user;
+        switch(select)
+        {
+            case 1:
+                user=User.signup(username,password,Role.ADMIN);
+                if(user!=null)
+                    caseRoleManager(user);
+                else
+                {
+                    System.out.println("Username is not available.\nPlease try again with another username.");
                     startMenu();
-                    break;
-            }
+                }
+                break;
+            case 2:
+                user=User.signup(username,password,Role.RESERVATION_MANAGER);
+                if(user!=null)
+                    caseRoleReservationManager(user);
+                else
+                {
+                    System.out.println("Username is not available.\nPlease try again with another username.");
+                    startMenu();
+                }
+                break;
+            case 3:
+                user=User.signup(username,password,Role.BOOK_READER);
+                if(user!=null)
+                    caseRoleBookReader(user);
+                else
+                {
+                    System.out.println("Username is not available.\nPlease try again with another username.");
+                    startMenu();
+                }
+            default:
+                startMenu();
+                break;
+        }
 
     }
 
     public static void caseRoleManager(User user)
     {
 
-            System.out.println("______________________________________________________________________________________________________________________________________________________");
-            Admin admin=(Admin)user;
-            System.out.println("Please choose an action:\n1:View the list of books\n2:Add new book\n3:Remove the existing book\n4:Back to start menu");
-            int select=sc.nextInt();
-            sc.nextLine();
+        System.out.println("______________________________________________________________________________________________________________________________________________________");
+        Admin admin=(Admin)user;
+        System.out.println("Please choose an action:\n1:View the list of books\n2:Add new book\n3:Remove the existing book\n4:Back to start menu");
+        int select=sc.nextInt();
+        sc.nextLine();
 
-            switch(select)
-            {
-                case 1:
-                    admin.ViewTheListOfBooks2();
-                    caseRoleManager(user);
-                    break;
-                case 2:
-                    System.out.println("Please enter the name of the new book:");
-                    String newBookName = sc.nextLine();
-                    System.out.println("Please enter the name of the author of  the new book:");
-                    String authorName = sc.nextLine();
-                    System.out.println("Please enter the number of pages in the new book");
-                    int numPages = sc.nextInt();
-                    sc.nextLine();
-                    System.out.println("Please enter the year of publication ot the new book:");
-                    int year = sc.nextInt();
-                    Date Year=new Date();
-                    Year.setYear(year);
-                    admin.addBook2(newBookName,authorName,numPages,Year);
+        switch(select)
+        {
+            case 1:
+                admin.ViewTheListOfBooks2();
+                caseRoleManager(user);
+                break;
+            case 2:
+                System.out.println("Please enter the name of the new book:");
+                String newBookName = sc.nextLine();
+                System.out.println("Please enter the name of the author of  the new book:");
+                String authorName = sc.nextLine();
+                System.out.println("Please enter the number of pages in the new book");
+                int numPages = sc.nextInt();
+                sc.nextLine();
+                System.out.println("Please enter the year of publication ot the new book:");
+                int year = sc.nextInt();
+                Date Year=new Date();
+                Year.setYear(year);
+                admin.addBook2(newBookName,authorName,numPages,Year);
 //                Book newBook=new Book(newBookName,authorName,numPages,Year);
 //                boolean result = admin.addBook(newBook);
 //                if (result)
@@ -157,9 +158,9 @@ public class Main
 //                {
 //                    System.out.println("This book is already available in the library.");
 //                }
-                    caseRoleManager(user);
-                    break;
-                case 3:
+                caseRoleManager(user);
+                break;
+            case 3:
 //                    System.out.println("Please enter the name of the remove book:");
 //                    String removeBookName = sc.nextLine();
 //                    System.out.println("Please enter the name of the author of  the remove book:");
@@ -173,19 +174,19 @@ public class Main
 //                    YearRemove.setYear(yearRemove);
 //                    Book book=new Book(removeBookName,authorNameRemove,numPagesRemove,YearRemove);
 //                    admin.removeBook2(book);
-                    admin.ViewTheListOfBooks2();
-                    System.out.println("Please enter the number of the book you want to delete:");
-                    int deleteNum = sc.nextInt();
-                    Book book=Library.library.getBooks().remove(deleteNum);
-                    admin.removeBook(book);
-                    System.out.println("The book has been successfully removed from the library.");
-                    caseRoleManager(user);
-                    break;
-                case 4:
-                    startMenu();
-                    break;
+                admin.ViewTheListOfBooks2();
+                System.out.println("Please enter the number of the book you want to delete:");
+                int deleteNum = sc.nextInt();
+                Book book=Library.library.getBooks().remove(deleteNum);
+                admin.removeBook(book);
+                System.out.println("The book has been successfully removed from the library.");
+                caseRoleManager(user);
+                break;
+            case 4:
+                startMenu();
+                break;
 
-            }
+        }
 
 
     }
