@@ -6,19 +6,19 @@ public class ReservationManager extends User
     }
 
 //دیدن لیست رزرو های کتاب
-    public void listOfBookReservationRequests()
-    {
-        for (int i=0; i<Library.library.getReservations().size(); i++)
-        {
-            System.out.println(Library.library.getReservations().get(i).toString());
-        }
-    }
+//    public void listOfBookReservationRequests()
+//    {
+//        for (int i=0; i<Library.library.getReservations().size(); i++)
+//        {
+//            System.out.println(Library.library.getReservations().get(i).toString());
+//        }
+//    }
     public void listOfBookReservationRequests2()
     {
         System.out.println("List of Reservation Requests:");
-        for (int i=0; i<Library.library.getReservations().size(); i++)
+        for (int i=0; i<Library.getInstance().getReservations().size(); i++)
         {
-            System.out.println(i+") "+Library.library.getReservations().get(i).toString());
+            System.out.println(i+") "+Library.getInstance().getReservations().get(i).toString());
         }
 //        for (Request request : library.getReservations())
 //        {
@@ -42,7 +42,7 @@ public class ReservationManager extends User
         Book book = request.getBook();
         book.setStatusBook(BookStatus.NOT_BOOKABLE);
         System.out.println("Approved: " + request);
-        Library.library.addBooks(request.getBook());
+        Library.getInstance().addBooks(request.getBook());
     }
 
 
@@ -55,7 +55,7 @@ public class ReservationManager extends User
     {
         request.setRequestStatus(RequestStatus.REJECTED);
         System.out.println("Rejected: " + request);
-        Library.library.removeReservations(request);
+        Library.getInstance().removeReservations(request);
     }
 
 }

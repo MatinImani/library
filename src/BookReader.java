@@ -17,42 +17,42 @@ public class BookReader extends User
 
 
 //دیدن لیست همه کتاب ها
-    public void ViewTheListOfBooks()
-    {
-        for (int i=0;i<Library.library.getBooks().size();i++)
-        {
-            System.out.println(i + ") " +Library.library.getBooks().get(i).toString());
-        }
-
-    }
+//    public void ViewTheListOfBooks()
+//    {
+//        for (int i=0;i<Library.library.getBooks().size();i++)
+//        {
+//            System.out.println(i + ") " +Library.library.getBooks().get(i).toString());
+//        }
+//
+//    }
     public void ViewTheListOfBooks2()
     {
         System.out.println("List of Books:");
-        for (Book book : Library.library.getBooks())
+        for (Book book : Library.getInstance().getBooks())
         {
             System.out.println(book);
         }
     }
 
 //درخواست رزرو کتاب
-    public boolean BookReservationRequest(Book book)
-    {
-        if(book.getStatusBook()==BookStatus.NOT_BOOKABLE)
-            return false;
-        Request request=new Request(this,book,RequestStatus.PENDING);
-        Library.library.getReservations().add(request);
-        return true;
-    }
+//    public boolean BookReservationRequest(Book book)
+//    {
+//        if(book.getStatusBook()==BookStatus.NOT_BOOKABLE)
+//            return false;
+//        Request request=new Request(this,book,RequestStatus.PENDING);
+//        Library.library.getReservations().add(request);
+//        return true;
+//    }
     public void BookReservationRequest2(String nameBook, String userName)
     {
         boolean found = false;
 
-        for(Book book : Library.library.getBooks())
+        for(Book book : Library.getInstance().getBooks())
         {
             if(book.getStatusBook()==BookStatus.BOOKABLE && book.getNameBook().equals(nameBook))
             {
                 Request request=new Request(this,book, RequestStatus.PENDING, userName);
-                Library.library.addReservation(request);
+                Library.getInstance().addReservation(request);
                 System.out.println("Reservation requested for: " + book.getNameBook());
                 found = true;
                 break;
@@ -75,16 +75,16 @@ public class BookReader extends User
     {
         if(request.getRequestStatus() != RequestStatus.PENDING)
             return false;
-        return Library.library.getReservations().remove(request);
+        return Library.getInstance().getReservations().remove(request);
     }
 
 //دیدن لیست درخواست های کاربر
     public void ViewTheListOfUserRequests()
     {
         System.out.println("List of Reserved Books:");
-        for (int i=0; i<Library.library.getReservations().size();i++)
+        for (int i=0; i<Library.getInstance().getReservations().size();i++)
         {
-            Request request=Library.library.getReservations().get(i);
+            Request request=Library.getInstance().getReservations().get(i);
             if(request.getUser().equals(this))
                 System.out.println(i + ") " +request);
         }
@@ -98,9 +98,9 @@ public class BookReader extends User
     public void ListOfAcceptedRequests()
     {
         System.out.println("List of accepted requests:");
-        for (int i=0;i<Library.library.getReservations().size();i++)
+        for (int i=0;i<Library.getInstance().getReservations().size();i++)
         {
-            Request request=Library.library.getReservations().get(i);
+            Request request=Library.getInstance().getReservations().get(i);
             if(request.getUser().equals(this) && request.getRequestStatus()==RequestStatus.ACCEPTED)
                 System.out.println(request.getBook());
         }

@@ -7,13 +7,13 @@ public class Main
 
     public static void main(String[] args)
     {
-        Library.library.addBooks(new Book("Java The Complete Reference", "Danny Coward",124,new Date(2021)));
-        Library.library.addBooks(new Book("Alice’s Adventures in Wonderland", " Lewis Carroll",522,new Date(1865)));
+        Library.getInstance().addBooks(new Book("Java The Complete Reference", "Danny Coward",124,new Date(2021)));
+        Library.getInstance().addBooks(new Book("Alice’s Adventures in Wonderland", " Lewis Carroll",522,new Date(1865)));
 
-        Library.library.addUsers(new Admin("matin imani","ma7inimn"));
+        Library.getInstance().addUsers(new Admin("matin imani","ma7inimn"));
 
         User user2=new Admin("nazanin hamidmanesh","n4z8nin");
-        Library.library.addUsers(user2);
+        Library.getInstance().addUsers(user2);
 
         startMenu();
 
@@ -177,7 +177,7 @@ public class Main
                 admin.ViewTheListOfBooks2();
                 System.out.println("Please enter the number of the book you want to delete:");
                 int deleteNum = sc.nextInt();
-                Book book=Library.library.getBooks().remove(deleteNum);
+                Book book=Library.getInstance().getBooks().remove(deleteNum);
                 admin.removeBook(book);
                 System.out.println("The book has been successfully removed from the library.");
                 caseRoleManager(user);
@@ -210,7 +210,7 @@ public class Main
                 System.out.println("Please enter the number of the request you want to approve:");
                 index=sc.nextInt();
                 sc.nextLine();
-                request=Library.library.getReservations().get(index);
+                request=Library.getInstance().getReservations().get(index);
                 reservationManager.acceptedTheRequest2(request);
                 System.out.println("Request has been successfully approved.");
                 caseRoleReservationManager(user);
@@ -220,7 +220,7 @@ public class Main
                 System.out.println("Please enter the number of the request you want to reject:");
                 index=sc.nextInt();
                 sc.nextLine();
-                request=Library.library.getReservations().get(index);
+                request=Library.getInstance().getReservations().get(index);
                 reservationManager.rejectingTheRequest2(request);
                 System.out.println("Request has been successfully rejected.");
                 caseRoleReservationManager(user);
@@ -254,7 +254,7 @@ public class Main
                 bookReader.ViewTheListOfUserRequests();
                 System.out.println("Please enter the number of the request you want to delete:");
                 int deleteNum = sc.nextInt();
-                Request removeRequest=Library.library.getReservations().get(deleteNum);
+                Request removeRequest=Library.getInstance().getReservations().get(deleteNum);
                 boolean result=bookReader.DeleteBookReservationRequest(removeRequest);
                 if(result)
                 {

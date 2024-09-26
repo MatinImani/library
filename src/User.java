@@ -31,15 +31,15 @@ public abstract class User
 
     public void viewTheListOfBooks1()
     {
-        for (int i=0; i<Library.library.getBooks().size(); i++)
+        for (int i=0; i<Library.getInstance().getBooks().size(); i++)
         {
-            Book book = Library.library.getBooks().get(i);
+            Book book = Library.getInstance().getBooks().get(i);
             System.out.println(i+") "+book);
         }
     }
     public static User login(String username, String password)
     {
-        for(User user : Library.library.getUsers())
+        for(User user : Library.getInstance().getUsers())
         {
             if(user.getUsername().equals(username) && user.getPassword().equals(password))
                 return user;
@@ -48,7 +48,7 @@ public abstract class User
     }
     public static User signup(String username, String password,Role role)
     {
-        for (User user : Library.library.getUsers())
+        for (User user : Library.getInstance().getUsers())
         {
             if(user.getUsername().equals(username))
                 return null;
@@ -67,7 +67,7 @@ public abstract class User
                 break;
         }
        // Library.getUsers().add(user);
-        Library.library.addUsers(user);
+        Library.getInstance().addUsers(user);
         return user;
     }
 
